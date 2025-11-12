@@ -13,7 +13,7 @@ Detetcs hard cuts in the video using histogram comparison.
 - Average scene length
 - Individual cut timestamps
 
-2. **Motion Analysis**
+### 2. **Motion Analysis**
 Quantifies camera and object motion using Optical Flow.
 
 #### Metrics:
@@ -22,7 +22,7 @@ Quantifies camera and object motion using Optical Flow.
 - Motion variability
 - High motion ratio
 
-3. **Text Detection (OCR)**
+### 3. **Text Detection (OCR)**
 Detetcs presence of on screen text using Tesseract OCR.
 #### Metrics:
 - Text present ration
