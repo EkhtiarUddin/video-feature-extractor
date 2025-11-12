@@ -20,10 +20,10 @@ def extract_cut_frames(video_path, json_path, output_dir='cut_frames'):
     for i, cut in enumerate(cuts):
         frame_num = cut['frame']
         timestamp = cut['timestamp']
-        # Extract frame BEFORE the cut
+
         cap.set(cv2.CAP_PROP_POS_FRAMES, frame_num - 1)
         ret, frame_before = cap.read()
-        # Extract frame AFTER the cut
+
         cap.set(cv2.CAP_PROP_POS_FRAMES, frame_num)
         ret, frame_after = cap.read()
         
@@ -51,6 +51,6 @@ def main():
     video_path = sys.argv[1]
     json_path = sys.argv[2]
     extract_cut_frames(video_path, json_path)
-
+    
 if __name__ == "__main__":
     main()
