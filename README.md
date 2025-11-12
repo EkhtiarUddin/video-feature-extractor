@@ -32,14 +32,6 @@ Detetcs presence of on screen text using Tesseract OCR.
 
 Note: It requires Tesseract OCR engine to be installed seperately ( check intallation guide from below)
 
-4. Brightness & Cntrast Analysis
-Measures lighting quality and consistency.
-
-#### Metrics:
-- Average brightness and contrast
-- Brightness/contrast variability
-- Brightness range
-
 ## Intallation Guide
 
 ### Step 1: Install Pyhon Dependencies
