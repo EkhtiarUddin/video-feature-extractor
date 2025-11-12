@@ -219,37 +219,6 @@ class VideoFeatureExtractor:
             'top_words': [{'word': word, 'count': count} for word, count in top_words]
         }
     
-    def calculate_brightness_contrast(self) -> Dict:
-        print("Calculating brightness and contrast...")
-        self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-        
-        brightness_values = []
-        contrast_values = []
-        frame_idx = 0
-        
-        while True:
-            ret, frame = self.cap.read()
-            if not ret:
-                break
-            
-            if frame_idx % self.sample_rate == 0:
-                gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-                brightness = np.mean(gray)
-                contrast = np.std(gray)
-                
-                brightness_values.append(brightness)
-                contrast_values.append(contrast)
-            
-            frame_idx += 1
-        
-        return {
-            'avg_brightness': float(np.mean(brightness_values)),
-            'std_brightness': float(np.std(brightness_values)),
-            'avg_contrast': float(np.mean(contrast_values)),
-            'std_contrast': float(np.std(contrast_values)),
-            'brightness_range': float(np.max(brightness_values) - np.min(brightness_values))
-        }
-    
     def extract_all_features(self) -> Dict:
         print(f"\n{'='*60}")
         print(f"Processing video: {self.video_path.name}")
@@ -270,7 +239,6 @@ class VideoFeatureExtractor:
             },
             'shot_cuts': self.detect_shot_cuts(),
             'motion_analysis': self.analyze_motion(),
-            'brightness_contrast': self.calculate_brightness_contrast()
         }
         
         if _import_pytesseract():
@@ -313,11 +281,6 @@ def print_summary(features: Dict):
         print(f"  Average motion: {motion['avg_motion']:.2f}")
         print(f"  Motion std dev: {motion['std_motion']:.2f}")
         print(f"  High motion ratio: {motion['high_motion_ratio']:.2%}")
-
-    bc = features['brightness_contrast']
-    print(f"\nBrightness & Contrast:")
-    print(f"  Average brightness: {bc['avg_brightness']:.2f}")
-    print(f"  Average contrast: {bc['avg_contrast']:.2f}")
 
     if 'text_detection' in features:
         text = features['text_detection']
