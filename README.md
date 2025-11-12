@@ -4,7 +4,7 @@
 ## **Features Implemented**
 This tool implements 4 core features
 
-1. **Shot Cut Detection**
+### 1. **Shot Cut Detection**
 Detetcs hard cuts in the video using histogram comparison.
 
 #### Metrics:
