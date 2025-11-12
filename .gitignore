@@ -1,0 +1,15 @@
+ Video files
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+*.flv
+
+# Generated output files
+video_features.json
+test_output.json
+*.json
+
+# Generated verification frames
+cut_frames/
