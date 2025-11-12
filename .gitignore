@@ -9,7 +9,6 @@
 # Generated output files
 video_features.json
 test_output.json
-*.json
 
 # Generated verification frames
 cut_frames/
